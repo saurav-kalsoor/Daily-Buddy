@@ -1,7 +1,7 @@
 var express = require('express');
 const createError = require('http-errors')
 const User = require('../models/User')
-const { authSchema } = require('../helpers/validation_schema')
+const { registerSchema, loginSchema } = require('../helpers/validation_schema')
 const { signAccessToken, signRefreshToken, verifyRefreshToken } = require('../helpers/jwt_helper')
 const client = require('../helpers/init_redis')
 
@@ -10,7 +10,7 @@ var router = express.Router();
 
 router.post('/register', async (req, res, next) => {
     try {
-        const result = await authSchema.validateAsync(req.body)
+        const result = await registerSchema.validateAsync(req.body)
         const doesExit = await User.findOne({ email: result.email })
         if (doesExit)
             throw createError.Conflict(`${result.email} already exits`)
@@ -30,13 +30,13 @@ router.post('/register', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     try {
-        const result = await authSchema.validateAsync(req.body)
+        const result = await loginSchema.validateAsync(req.body)
         const user = await User.findOne({ email: result.email })
         if (!user) throw createError.NotFound('User not registered')
-
+        
         const isMatch = await user.isPasswordValid(result.password)
         if (!isMatch) throw createError.Unauthorized('Email/password not valid')
-
+        
         const accessToken = await signAccessToken(user.id)
         const refreshToken = await signRefreshToken(user.id)
         res.send({ accessToken, refreshToken })
