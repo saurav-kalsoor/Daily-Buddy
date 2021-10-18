@@ -1,14 +1,12 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import '../StyleBootstrap.css';
 
 function Navbar() {
     return (
-        <nav nav className="navbar navbar-expand-lg navbar-light bg-light" >
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" >
 
-            {/* <Link className="navbar-brand" to="/">DailyBuddy</Link> */}
-            <Link style={{color: 'blue'}} class="navbar-brand" to="/">
-                <img src="img/Daily Buddy-logos.jpeg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy" />
+            <Link style={{ color: 'blue' }} className="navbar-brand" to="/">
+                <img src="img/Daily Buddy-logos.jpeg" width="30" height="30" className="d-inline-block rounded-circle align-top mx-1" alt="" loading="lazy" />
                 Daily Buddy
             </Link>
 
@@ -37,4 +35,3 @@ function Navbar() {
 }
 
 export default Navbar
-

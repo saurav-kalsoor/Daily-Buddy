@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Style.css';
 
 function Registration() {
     return (
@@ -13,7 +12,8 @@ function Registration() {
 
                     <div className="col-md-6 my-3">
                         <div className="text-center">
-                            <form action="">
+
+                            <form className="register-login" action="">
                                 <h1 className="font-weight-bold text-primary mb-4">DAILY BUDDY</h1>
                                 <div className="input-field w-75 mx-auto">
                                     <i className="fa fa-user"></i>
@@ -27,9 +27,9 @@ function Registration() {
                                     <i className="fa fa-lock"></i>
                                     <input type="password" placeholder="Password" />
                                 </div>
-                                <input type="submit" value="Sign up" className="btn btn-lg btn-outline-primary rounded-pill m-3 font-weight-bold" />
-
+                                <input type="submit" value="Sign up" className="btn btn-outline-primary rounded-pill m-3 px-5 font-weight-bold" />
                             </form>
+                            
                         </div>
                     </div>
                 </div>

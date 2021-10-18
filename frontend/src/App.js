@@ -1,9 +1,11 @@
-import './App.css';
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Navbar from './components/navbar/Navbar';
+import Expense from './components/expenseTracker/Expense';
 
-import Login from './components/Login';
-import Registration from './components/Registration';
-import Navbar from './components/Navbar';
+import ('./App.css')
 
 function App() {
   return (
@@ -13,12 +15,12 @@ function App() {
         <div className="container">
           <Switch>
 
-            {/* <Route exact path="/">
-            <Home />
-          </Route> */}
+            <Route exact path="/">
+              <Expense />
+          </Route>
 
-            <Route exact path="/registration">
-              <Registration />
+            <Route exact path="/register">
+              <Register />
             </Route>
 
             <Route exact path="/login">
