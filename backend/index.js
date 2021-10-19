@@ -1,17 +1,21 @@
 const express = require('express')
 const { port } = require('./config')
 const createError =require('http-errors')
+const cors = require('cors')
 const authRoute = require('./routes/auth')
+const transRoute = require('./routes/transaction')
 
 require('./dbconfig')
 require('./helpers/init_redis')
 
 const app = express()
+app.use(cors())
 app.use(express.json()) // To parse incoming json data
 app.use(express.urlencoded({extended: true})) // To parse incoming form data 
 
-// Setting auth end points for api
+// Setting end points for api
 app.use('/auth', authRoute)
+app.use('/transaction', transRoute)
 
 // If route not present
 app.use((req,res,next)=>{
@@ -30,7 +34,7 @@ app.use((err,req,res,next)=>{
 })
 
 // Setting Port to listen
-const PORT = port || 3000
+const PORT = port || 5000
 app.listen(PORT, () => {
   console.log(`Server running at port ${PORT}`)
 })

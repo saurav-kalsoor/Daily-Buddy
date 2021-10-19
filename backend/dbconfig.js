@@ -9,7 +9,7 @@ mongoose.connect(mongodb_uri, {
         console.log("Mongo connected :)")
     }).catch(err => console.log(err.message))
 
-// Gettin log messages at certain points
+// Getting log messages at certain points
 mongoose.connection.on('connected', () => {
     console.log('Mongoose connected to db')
 })
