@@ -2,6 +2,15 @@
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+/*   General Styles    */
+.del-icon{
+  line-height: 3;
+}
+
+i:hover{
+  cursor: pointer;
+}
+
 /************************************ Navbar Style ************************************/
 .btn-outline-primary:focus {
   box-shadow: none;
@@ -153,15 +162,14 @@ body {
   width: 50%;
 }
 
-.exp-btn:focus,
-.delete-btn:focus {
+.exp-btn:focus{
   outline: 0;
 }
 
 .list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .list li {
@@ -181,24 +189,4 @@ body {
 
 .list li.minus {
   border-right: 5px solid #c0392b;
-}
-
-.delete-btn {
-  cursor: pointer;
-  background-color: #e74c3c;
-  border: 0;
-  color: #fff;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 2px 5px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(-100%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.list li:hover .delete-btn {
-  opacity: 1;
 }

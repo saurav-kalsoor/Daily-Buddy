@@ -2,34 +2,45 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar';
 import Expense from './components/expenseTracker/Expense';
+import TransactionState from './context/transactions/TransactionState';
+import UserState from './context/users/UserState';
+import Home from './components/Home';
 
-import ('./App.css')
+import('./App.css')
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <div className="container">
-          <Switch>
+      <UserState>
+        <TransactionState>
+          <Router>
+            <Navbar />
+            <div className="container">
+              <Switch>
 
-            <Route exact path="/">
-              <Expense />
-          </Route>
+                <Route exact path="/">
+                  <Home />
+                </Route>
 
-            <Route exact path="/register">
-              <Register />
-            </Route>
+                <Route exact path="/register">
+                  <Register />
+                </Route>
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
 
-          </Switch>
-        </div>
-      </Router>
+                <Route exact path="/expense">
+                  <Expense />
+                </Route>
+
+              </Switch>
+            </div>
+          </Router>
+        </TransactionState>
+      </UserState>
     </>
 
   );
