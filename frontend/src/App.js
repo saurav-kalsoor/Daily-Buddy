@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/auth/Login';
@@ -32,6 +33,16 @@ function App() {
       </Router>
     </>
 
+=======
+import './App.css';
+import Calendar from './components/Calendar';
+
+function App() {
+  return (
+    <div className="App">
+      <Calendar/>
+    </div>
+>>>>>>> saurav
   );
 }
 
