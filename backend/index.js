@@ -6,7 +6,7 @@ const authRoute = require('./routes/auth')
 const transRoute = require('./routes/transaction')
 
 require('./dbconfig')
-require('./helpers/init_redis')
+//require('./helpers/init_redis')
 
 const app = express()
 app.use(cors())
@@ -26,6 +26,7 @@ app.use((req,res,next)=>{
 app.use((err,req,res,next)=>{
   res.status(err.status || 500)
   res.send({
+      success: false,
       error: {
           status: err.status || 500,
           message: err.message
