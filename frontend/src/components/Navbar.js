@@ -1,7 +1,7 @@
 import { React, useContext, useEffect } from 'react'
 import { Link, useHistory, useLocation } from "react-router-dom";
 import UserContext from '../context/users/UserContext';
-// import AnalogClock from '../analogClock/AnalogClock';
+import AnalogClock from './analogClock/AnalogClock';
 
 function Navbar() {
 
@@ -56,6 +56,10 @@ function Navbar() {
                 }
 
             </div>
+
+            {localStorage.getItem('token') && <div className="dropdown mx-1">
+                <AnalogClock/>
+            </div>}
 
             {/* Protected Routes */}
             {localStorage.getItem('token') && <div className="dropdown mx-4">
