@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar';
 import Expense from './components/expenseTracker/Expense';
 
 import ('./App.css')
@@ -33,16 +32,6 @@ function App() {
       </Router>
     </>
 
-=======
-import './App.css';
-import Calendar from './components/Calendar';
-
-function App() {
-  return (
-    <div className="App">
-      <Calendar/>
-    </div>
->>>>>>> saurav
   );
 }
 
