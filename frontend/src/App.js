@@ -40,6 +40,10 @@ function App() {
                   <Expense />
                 </Route>
 
+                <Route exact path="/classScheduler">
+                  <Calendar />
+                </Route>
+
               </Switch>
             </div>
           </Router>
