@@ -1,24 +1,39 @@
-<<<<<<< HEAD
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navbar from './components/navbar/Navbar';
 import Expense from './components/expenseTracker/Expense';
-
-import ('./App.css')
+import Calendar from './components/classScheduler/Calendar';
+import { useAlert } from 'react-alert'
+import('./App.css')
 
 function App() {
+
+  const alert = useAlert()
+
   return (
     <>
       <Router>
+        <button
+          onClick={() => {
+            alert.show('Oh look, an alert!', { type: 'success'})
+          }}
+        >
+          Show Alert
+        </button>
         <Navbar />
+
         <div className="container">
           <Switch>
 
             <Route exact path="/">
               <Expense />
-          </Route>
+            </Route>
+
+            <Route exact path="/classScheduler">
+              <Calendar />
+            </Route>
 
             <Route exact path="/register">
               <Register />
@@ -33,16 +48,6 @@ function App() {
       </Router>
     </>
 
-=======
-import './App.css';
-import Calendar from './components/Calendar';
-
-function App() {
-  return (
-    <div className="App">
-      <Calendar/>
-    </div>
->>>>>>> saurav
   );
 }
 

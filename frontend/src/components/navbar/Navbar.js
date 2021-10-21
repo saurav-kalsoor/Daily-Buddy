@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import AnalogClock from '../analogClock/AnalogClock';
 
 function Navbar() {
     return (
@@ -19,12 +20,19 @@ function Navbar() {
                     <li className="nav-item active">
                         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                     </li>
+                    <li className="nav-item active">
+                        <Link className="nav-link" to="/classScheduler">Class Scheduler <span className="sr-only">(current)</span></Link>
+                    </li>
                 </ul>
+            </div>
+
+            <div className="d-end mx-3">
+                <AnalogClock/>
             </div>
 
             <div className="dropdown">
                 <button type="button" className="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
-                    Name of person
+                    Saurav Kalsoor
                 </button>
                 <div className="dropdown-menu">
                     <Link className="dropdown-item" to="/">Logout</Link>

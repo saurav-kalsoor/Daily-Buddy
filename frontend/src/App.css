@@ -158,7 +158,6 @@ body {
   outline: 0;
 }
 
-<<<<<<< HEAD
 .list {
   list-style-type: none;
   padding: 0;
@@ -202,7 +201,8 @@ body {
 
 .list li:hover .delete-btn {
   opacity: 1;
-=======
+}
+
 body{
   margin-top:20px;
 }
@@ -330,5 +330,4 @@ body{
 
 .cursor-pointer{
   cursor: pointer;
->>>>>>> saurav
 }
