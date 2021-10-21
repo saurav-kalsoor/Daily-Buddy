@@ -2,7 +2,7 @@ import { React, useContext, useEffect } from 'react'
 import { Link, useHistory, useLocation } from "react-router-dom";
 import UserContext from '../context/users/UserContext';
 import { useAlert } from 'react-alert'
-import AnalogClock from '../analogClock/AnalogClock';
+import AnalogClock from  './analogClock/AnalogClock'
 
 function Navbar() {
 
