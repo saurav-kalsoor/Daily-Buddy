@@ -16,12 +16,8 @@
     "http-errors": "^1.8.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
-<<<<<<< HEAD
-    "mongoose": "^6.0.11",
-=======
     "mongoose": "^6.0.10",
     "nodemon": "^2.0.14",
->>>>>>> a2b6dc6fd4f5aa5cef990c20bfdb2bae8e82e5c2
     "redis": "^3.1.2"
   }
 }
