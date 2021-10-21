@@ -1,1 +1,1 @@
-# Student-Helper
+# Daily-Buddy
