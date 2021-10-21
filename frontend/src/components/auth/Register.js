@@ -1,6 +1,40 @@
-import React from 'react'
+import { React, useState } from 'react'
+import { Link, useHistory } from "react-router-dom";
 
 function Registration() {
+    const [details, setDetails] = useState({ username: "", email: "", password: "" })
+    const host = process.env.REACT_APP_HOST
+    let history = useHistory();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch(`${host}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: details.username, email: details.email, password: details.password })
+        });
+        const json = await response.json();
+        console.log(json)
+
+        if (json.success) {
+            localStorage.setItem('token', json.accessToken); // Save auth token and redirect
+            history.push("/");
+            alert("Account created Successsfully")
+            //props.showAlert("Account created Successsfully", "success")
+
+        } else {
+            alert("Invalid Credentials")
+            //props.showAlert("Invalid Credentials", "danger")
+        }
+
+    }
+
+    const onChange = (e) => {
+        setDetails({ ...details, [e.target.name]: e.target.value })
+    }
     return (
         <>
             <div className="container">
@@ -13,23 +47,23 @@ function Registration() {
                     <div className="col-md-6 my-3">
                         <div className="text-center">
 
-                            <form className="register-login" action="">
+                            <form onSubmit={handleSubmit} className="register-login" action="">
                                 <h1 className="font-weight-bold text-primary mb-4">DAILY BUDDY</h1>
                                 <div className="input-field w-75 mx-auto">
                                     <i className="fa fa-user"></i>
-                                    <input type="text" placeholder="Username" />
+                                    <input type="text" name="username" placeholder="Username" onChange={onChange} required minLength={3} />
                                 </div>
                                 <div className="input-field w-75 mx-auto">
                                     <i className="fa fa-envelope"></i>
-                                    <input type="email" placeholder="Email" />
+                                    <input type="email" name="email" placeholder="Email" onChange={onChange} required />
                                 </div>
                                 <div className="input-field w-75 mx-auto">
                                     <i className="fa fa-lock"></i>
-                                    <input type="password" placeholder="Password" />
+                                    <input type="password" name="password" placeholder="Password" onChange={onChange} required minLength={3} />
                                 </div>
                                 <input type="submit" value="Sign up" className="btn btn-outline-primary rounded-pill m-3 px-5 font-weight-bold" />
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -37,8 +71,8 @@ function Registration() {
             {/* Router handle */}
             <div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
                 <h1 className="font-weight-bold">One of us?</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum dicta assumenda dolorum doloremque similique ipsa dolore porro sunt, eos facilis mollitia</p>
-                <a href="signin.html" className="btn btn-lg btn-outline-primary rounded-pill font-weight-bold">Sign in</a>
+                <p>Hurry up and login here we are waiting for you ;)</p>
+                <Link to="/login" className="btn btn-lg btn-outline-primary rounded-pill m-3 px-5 font-weight-bold">Login</Link>
             </div>
         </>
     )

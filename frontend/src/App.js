@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar';
 import Expense from './components/expenseTracker/Expense';
 import Calendar from './components/classScheduler/Calendar';
 import { useAlert } from 'react-alert'
