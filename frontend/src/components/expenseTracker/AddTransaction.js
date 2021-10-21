@@ -1,9 +1,11 @@
 import { React, useContext, useState } from "react";
 import TransactionContext from '../../context/transactions/TransactionContext'
+import { useAlert } from 'react-alert'
 
 function AddTransaction() {
     const { addTransaction } = useContext(TransactionContext);
-    
+    const alert = useAlert();
+
     const [transaction, setTransaction] = useState({
         text: "",
         amount: ""
@@ -16,8 +18,7 @@ function AddTransaction() {
             text: "",
             amount: ""
         })
-        //alert("Added Successfully")
-        //props.showAlert("Added Successfully", "success")
+        alert.success("Added Successfully")
     };
 
     const onChange = (e) => {

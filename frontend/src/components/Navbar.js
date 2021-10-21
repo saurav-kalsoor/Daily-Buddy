@@ -1,14 +1,16 @@
 import { React, useContext, useEffect } from 'react'
 import { Link, useHistory, useLocation } from "react-router-dom";
 import UserContext from '../context/users/UserContext';
+import { useAlert } from 'react-alert'
 // import AnalogClock from '../analogClock/AnalogClock';
 
 function Navbar() {
 
     const { users, getUser } = useContext(UserContext);
-
+    const alert = useAlert();
     let location = useLocation();
     let history = useHistory();
+
     useEffect(() => {
         if (localStorage.getItem('token'))
             getUser();
@@ -17,7 +19,8 @@ function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        history.push('/login')
+        history.push('/')
+        alert.show("Logged out successfully")
     }
 
     return (

@@ -1,10 +1,12 @@
 import { React, useState } from 'react'
 import { Link, useHistory } from "react-router-dom";
+import { useAlert } from 'react-alert'
 
 function Registration() {
     const [details, setDetails] = useState({ username: "", email: "", password: "" })
     const host = process.env.REACT_APP_HOST
     let history = useHistory();
+    const alert = useAlert();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,12 +24,9 @@ function Registration() {
         if (json.success) {
             localStorage.setItem('token', json.accessToken); // Save auth token and redirect
             history.push("/");
-            alert("Account created Successsfully")
-            //props.showAlert("Account created Successsfully", "success")
-
+            alert.success("Account created Successsfully")
         } else {
-            alert("Invalid Credentials")
-            //props.showAlert("Invalid Credentials", "danger")
+            alert.error("Invalid Credentials")
         }
 
     }
@@ -68,7 +67,7 @@ function Registration() {
                     </div>
                 </div>
             </div>
-            {/* Router handle */}
+            
             <div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
                 <h1 className="font-weight-bold">One of us?</h1>
                 <p>Hurry up and login here we are waiting for you ;)</p>

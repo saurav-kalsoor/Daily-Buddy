@@ -1,13 +1,16 @@
 import { React, useContext } from 'react'
 import TransactionContext from '../../context/transactions/TransactionContext'
 import { numberWithCommas } from '../../utils/format'
+import { useAlert } from 'react-alert'
 
 function TransactionListItem(props) {
     const { deleteTransaction } = useContext(TransactionContext)
     const { text, amount, _id, date } = props.transaction;
+    const alert = useAlert();
+
     const onClickDelete = () => {
         deleteTransaction(_id)
-        //alert("Transaction deleted")
+        alert.success("Transaction deleted")
     }
 
     return (
@@ -17,6 +20,7 @@ function TransactionListItem(props) {
                 <br />
                 {new Date(date).toLocaleString('en-IN')}
             </div>
+            
             <div>
                 {amount < 0 ? "-" : ""} Rs {numberWithCommas(Math.abs(amount).toFixed(2))}
                 <i className="far fa-trash-alt ml-3 del-icon" onClick={onClickDelete}> </i>

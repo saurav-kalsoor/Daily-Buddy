@@ -1,11 +1,13 @@
-import {React, useState } from 'react'
+import { React, useState } from 'react'
 import { Link, useHistory } from "react-router-dom";
+import { useAlert } from 'react-alert'
 
 function Login() {
 
 	const [credentials, setCredentials] = useState({ email: "", password: "" })
 	const host = process.env.REACT_APP_HOST
 	let history = useHistory();
+	const alert = useAlert();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -18,18 +20,14 @@ function Login() {
 			body: JSON.stringify({ email: credentials.email, password: credentials.password })
 		});
 		const json = await response.json(); // Recieved token
-		console.log(json)
 
 		if (json.success) {
-            localStorage.setItem('token', json.accessToken); // Save auth token and redirect
-            history.push("/");
-			//alert("Logged in Successsfully")
-            //props.showAlert("Logged in Successsfully", "success")
-
-        } else {
-            alert("Invalid Credentials")
-			//props.showAlert("Invalid Credentials", "danger")
-        }
+			localStorage.setItem('token', json.accessToken); // Save auth token and redirect
+			history.push("/");
+			alert.success("Logged in Successsfully")
+		} else {
+			alert.error("Invalid Credentials")
+		}
 	}
 
 	const onChange = (e) => {
@@ -67,12 +65,12 @@ function Login() {
 					</div>
 				</div>
 			</div>
-				{/* Routes maintainance */}
-	<div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
-		<h1 className="font-weight-bold">New here?</h1>
-		<p>Join our community to get benifits</p>
-		<Link to="/register" className="btn btn-lg btn-outline-primary rounded-pill m-3 px-5  font-weight-bold">Sign up</Link>
-	</div>
+			
+			<div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
+				<h1 className="font-weight-bold">New here?</h1>
+				<p>Join our community to get benifits</p>
+				<Link to="/register" className="btn btn-lg btn-outline-primary rounded-pill m-3 px-5  font-weight-bold">Sign up</Link>
+			</div>
 		</>
 	)
 }

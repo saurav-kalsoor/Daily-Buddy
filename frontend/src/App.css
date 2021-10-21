@@ -3,11 +3,11 @@
 }
 
 /*   General Styles    */
-.del-icon{
+.del-icon {
   line-height: 3;
 }
 
-i:hover{
+i:hover {
   cursor: pointer;
 }
 
@@ -85,8 +85,8 @@ body {
 .add-trn-box {
   width: 47%;
 }
-.trn-list-box{
-    width: 47%;
+.trn-list-box {
+  width: 47%;
 }
 .exp-h1 {
   letter-spacing: 1px;
@@ -137,9 +137,9 @@ body {
 }
 
 .form-label {
-    display: inline-block;
-    margin: 10px 0;
-  }
+  display: inline-block;
+  margin: 10px 0;
+}
 
 .form-input-fields {
   border: 1px solid #dedede;
@@ -162,7 +162,7 @@ body {
   width: 50%;
 }
 
-.exp-btn:focus{
+.exp-btn:focus {
   outline: 0;
 }
 
@@ -208,6 +208,7 @@ body {
 .footer-container img {
   height: 90px;
   width: 90px;
+  margin-bottom: 5px;
   border-radius: 50%;
   transition: 0.5s;
 }
@@ -219,7 +220,7 @@ body {
 
 .social-icons {
   display: flex;
-  padding: 20px 0;
+  padding: 13px 0;
 }
 
 .social-icons i {
@@ -230,153 +231,101 @@ body {
   border-radius: 50%;
   border: 1px solid #fff;
   cursor: pointer;
-  transition: 0.3s;
 }
-
 
 .social-icons .bxl-linkedin-square {
   border: 1px solid #00acee;
   color: #00acee;
 }
 
-
-.footer-links {
-  display: flex;
-}
-
-.footer-links .menu-item {
-  color: rgba(255,255,255,.8);
-  margin: 0 20px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.footer-links .menu-item:hover {
-  color: rgba(255,255,255);
-}
-
-.footer-links .menu-item::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 1.6px;
-  background: #fff;
-  transition: width .3s;
-}
-
-.footer-links .menu-item:hover::after {
-  width: 100%;
-  transition: width .3s;
-}
-
 .copyright {
-  color: rgba(255,255,255,.3);
-}
-.delete-btn {
-  cursor: pointer;
-  background-color: #e74c3c;
-  border: 0;
-  color: #fff;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 2px 5px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(-100%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.list li:hover .delete-btn {
-  opacity: 1;
-}
+/* Calendar CSS */
 
-body{
-  margin-top:20px;
-}
 .bg-light-gray {
   background-color: #f7f7f7;
 }
-.table-bordered thead td, .table-bordered thead th {
+.table-bordered thead td,
+.table-bordered thead th {
   border-bottom-width: 2px;
 }
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
 }
-.table-bordered td, .table-bordered th {
+.table-bordered td,
+.table-bordered th {
   border: 1px solid #dee2e6;
 }
 
-
 .bg-sky.box-shadow {
-  box-shadow: 0px 5px 0px 0px #00a2a7
+  box-shadow: 0px 5px 0px 0px #00a2a7;
 }
 
 .bg-orange.box-shadow {
-  box-shadow: 0px 5px 0px 0px #af4305
+  box-shadow: 0px 5px 0px 0px #af4305;
 }
 
 .bg-green.box-shadow {
-  box-shadow: 0px 5px 0px 0px #4ca520
+  box-shadow: 0px 5px 0px 0px #4ca520;
 }
 
 .bg-yellow.box-shadow {
-  box-shadow: 0px 5px 0px 0px #dcbf02
+  box-shadow: 0px 5px 0px 0px #dcbf02;
 }
 
 .bg-pink.box-shadow {
-  box-shadow: 0px 5px 0px 0px #e82d8b
+  box-shadow: 0px 5px 0px 0px #e82d8b;
 }
 
 .bg-purple.box-shadow {
-  box-shadow: 0px 5px 0px 0px #8343e8
+  box-shadow: 0px 5px 0px 0px #8343e8;
 }
 
 .bg-lightred.box-shadow {
-  box-shadow: 0px 5px 0px 0px #d84213
+  box-shadow: 0px 5px 0px 0px #d84213;
 }
 
 .bg-blue.box-shadow {
-  box-shadow: 0px 5px 0px 0px #032da1
+  box-shadow: 0px 5px 0px 0px #032da1;
 }
 
-
 .bg-sky {
-  background-color: #02c2c7
+  background-color: #02c2c7;
 }
 
 .bg-orange {
-  background-color: #e95601
+  background-color: #e95601;
 }
 
 .bg-green {
-  background-color: #5bbd2a
+  background-color: #5bbd2a;
 }
 
 .bg-yellow {
-  background-color: #f0d001
+  background-color: #f0d001;
 }
 
 .bg-pink {
-  background-color: #ff48a4
+  background-color: #ff48a4;
 }
 
 .bg-purple {
-  background-color: #9d60ff
+  background-color: #9d60ff;
 }
 
 .bg-lightred {
-  background-color: #ff5722
+  background-color: #ff5722;
 }
 
-.bg-blue{
-  background-color: #032da1
+.bg-blue {
+  background-color: #032da1;
 }
 
-.bg-lightgreen{
-  background-color: #8dd816
+.bg-lightgreen {
+  background-color: #8dd816;
 }
 
 .padding-15px-lr {
@@ -408,15 +357,17 @@ body{
   font-size: 13px;
 }
 
-.table-bordered td, .table-bordered th {
+.table-bordered td,
+.table-bordered th {
   border: 1px solid #dee2e6;
 }
-.table td, .table th {
-  padding: .75rem;
+.table td,
+.table th {
+  padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }

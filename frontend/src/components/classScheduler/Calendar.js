@@ -2,12 +2,10 @@ import React, { useRef, useState } from 'react'
 import { addCalendarEvent } from '../../utils/GCalApi'
 import links from '../../utils/Constants';
 
-
-
 export default function Calendar() {
 
     const ref = useRef(null)
-    const [classData, setclassData] = useState({ subject: "", time: new Date(), link: ""})
+    const [classData, setclassData] = useState({ subject: "", time: new Date(), link: "" })
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     const handleClick = (e) => {
@@ -23,10 +21,9 @@ export default function Calendar() {
             date.setMinutes(0);
             date.setSeconds(0);
 
-            
             setclassData({
                 subject: sub,
-                link : links.get(sub),
+                link: links.get(sub),
                 time: date
             })
 
@@ -37,13 +34,12 @@ export default function Calendar() {
         ref.current.click()
     }
 
-    const addEvent = () =>{
+    const addEvent = () => {
         addCalendarEvent(classData.time, classData.link, classData.subject)
     }
 
     return (
         <div className="container">
-
 
             <button ref={ref} type="button" className="d-none btn btn-primary" data-toggle="modal" data-target="#exampleModal"></button>
 
@@ -70,7 +66,7 @@ export default function Calendar() {
                 </div>
             </div>
 
-            <h1 className="my-5 text-center">Class Scheduler</h1>
+            <h1 className="my-3 text-center">Class Scheduler</h1>
             <div className="table-responsive">
                 <table className="table table-bordered text-center">
                     <thead>
@@ -94,7 +90,7 @@ export default function Calendar() {
                             <td>
                                 <span id="4-8" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">8:00-9:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td />
                             <td />
@@ -106,18 +102,18 @@ export default function Calendar() {
                             <td>
                                 <span id="2-9" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-lightred" onClick={handleClick} >SAQT</span>
                                 <div className="margin-10px-top font-size14">9:00-10:00</div>
-                                <div className="font-size13 text-light-gray">Marta Healy</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td />
                             <td>
                                 <span id="4-9" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">9:00-10:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td>
                                 <span id="5-9" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-green" onClick={handleClick} >TOC</span>
                                 <div className="margin-10px-top font-size14">9:00-10:00</div>
-                                <div className="font-size13 text-light-gray">Kurhekar</div>
+                                <div className="font-size13 text-light-gray">Prof. Manish Kurheker</div>
                             </td>
                             <td />
                         </tr>
@@ -127,27 +123,27 @@ export default function Calendar() {
                             <td>
                                 <span id="1-10" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-yellow" onClick={handleClick} >NFT</span>
                                 <div className="margin-10px-top font-size14">10:00-11:00</div>
-                                <div className="font-size13 text-light-gray">Poonam Sharma</div>
+                                <div className="font-size13 text-light-gray">Prof. Poonam Sharma</div>
                             </td>
                             <td>
                                 <span id="2-10" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-pink" onClick={handleClick} >IWP</span>
                                 <div className="margin-10px-top font-size14">10:00-11:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Anshul Agarwal</div>
                             </td>
                             <td>
                                 <span id="3-10" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-purple" onClick={handleClick} >OS</span>
                                 <div className="margin-10px-top font-size14">10:00-11:00</div>
-                                <div className="font-size13 text-light-gray">Praveen Kumar</div>
+                                <div className="font-size13 text-light-gray">Prof. Praveen Kumar</div>
                             </td>
                             <td>
                                 <span id="4-10" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-lightred" onClick={handleClick} >SAQT</span>
                                 <div className="margin-10px-top font-size14">10:00-11:00</div>
-                                <div className="font-size13 text-light-gray">Marta Healy</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td>
                                 <span id="5-10" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-green" onClick={handleClick} >TOC</span>
                                 <div className="margin-10px-top font-size14">10:00-11:00</div>
-                                <div className="font-size13 text-light-gray">Kurhekar</div>
+                                <div className="font-size13 text-light-gray">Prof. Manish Kurheker</div>
                             </td>
                             <td>
                                 <span id="6-10" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-blue" onClick={handleClick} >SL</span>
@@ -161,32 +157,32 @@ export default function Calendar() {
                             <td>
                                 <span id="1-11" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-purple" onClick={handleClick} >OS</span>
                                 <div className="margin-10px-top font-size14">11:00-12:00</div>
-                                <div className="font-size13 text-light-gray">Praveen Kumar</div>
+                                <div className="font-size13 text-light-gray">Prof. Praveen Kumar</div>
                             </td>
                             <td>
                                 <span id="2-11" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-purple" onClick={handleClick} >OS</span>
                                 <div className="margin-10px-top font-size14">11:00-12:00</div>
-                                <div className="font-size13 text-light-gray">Praveen Kumar</div>
+                                <div className="font-size13 text-light-gray">Prof. Praveen Kumar</div>
                             </td>
                             <td>
                                 <span id="3-11" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-yellow" onClick={handleClick} >NFT</span>
                                 <div className="margin-10px-top font-size14">11:00-12:00</div>
-                                <div className="font-size13 text-light-gray">Poonam Sharma</div>
+                                <div className="font-size13 text-light-gray">Prof. Poonam Sharma</div>
                             </td>
                             <td>
                                 <span id="4-11" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-pink" onClick={handleClick} >IWP</span>
                                 <div className="margin-10px-top font-size14">11:00-12:00</div>
-                                <div className="font-size13 text-light-gray">Marta Healy</div>
+                                <div className="font-size13 text-light-gray">Prof. Anshul Agarwal</div>
                             </td>
                             <td>
                                 <span id="5-11" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-pink" onClick={handleClick} >IWP</span>
                                 <div className="margin-10px-top font-size14">11:00-12:00</div>
-                                <div className="font-size13 text-light-gray">Marta Healy</div>
+                                <div className="font-size13 text-light-gray">Prof. Anshul Agarwal</div>
                             </td>
                             <td>
                                 <span id="6-11" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-lightred" onClick={handleClick} >SAQT</span>
                                 <div className="margin-10px-top font-size14">11:00-12:00</div>
-                                <div className="font-size13 text-light-gray">Marta Healy</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                         </tr>
 
@@ -196,18 +192,18 @@ export default function Calendar() {
                             <td>
                                 <span id="2-12" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-yellow" onClick={handleClick} >NFT</span>
                                 <div className="margin-10px-top font-size14">12:00-1:00</div>
-                                <div className="font-size13 text-light-gray">Poonam Sharma</div>
+                                <div className="font-size13 text-light-gray">Prof. Poonam Sharma</div>
                             </td>
                             <td />
                             <td>
                                 <span id="4-12" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-purple" onClick={handleClick} >OS</span>
                                 <div className="margin-10px-top font-size14">12:00-1:00</div>
-                                <div className="font-size13 text-light-gray">Praveen Kumar</div>
+                                <div className="font-size13 text-light-gray">Prof. Praveen Kumar</div>
                             </td>
                             <td>
                                 <span id="5-12" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-yellow" onClick={handleClick} >NFT</span>
                                 <div className="margin-10px-top font-size14">12:00-1:00</div>
-                                <div className="font-size13 text-light-gray">Poonam Sharma</div>
+                                <div className="font-size13 text-light-gray">Prof. Poonam Sharma</div>
                             </td>
                             <td />
                         </tr>
@@ -244,29 +240,29 @@ export default function Calendar() {
                             <td>
                                 <span id="1-14" className="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 cursor-pointer" onClick={handleClick}>IWP</span>
                                 <div className="margin-10px-top font-size14">2:00-3:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Anshul Agarwal</div>
                             </td>
                             <td>
                                 <span id="2-14" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-lightgreen" onClick={handleClick} >CP(TNP)</span>
                                 <div className="margin-10px-top font-size14">2:00-3:00</div>
-                                <div className="font-size13 text-light-gray">Marta Healy</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
 
                             <td>
                                 <span id="3-14" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-lightred" onClick={handleClick} >SAQT</span>
                                 <div className="margin-10px-top font-size14">2:00-3:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td />
                             <td>
                                 <span id="5-14" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">2:00-3:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td>
                                 <span id="6-14" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">2:00-3:00</div>
-                                <div className="font-size13 text-light-gray">Kate Alley</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                         </tr>
 
@@ -275,28 +271,28 @@ export default function Calendar() {
                             <td>
                                 <span id="1-15" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 cursor-pointer bg-green" onClick={handleClick} >TOC</span>
                                 <div className="margin-10px-top font-size14">3:00-4:00</div>
-                                <div className="font-size13 text-light-gray">Kurhekar</div>
+                                <div className="font-size13 text-light-gray">Prof. Manish Kurheker</div>
                             </td>
                             <td>
                                 <span id="2-15" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-green" onClick={handleClick} >TOC</span>
                                 <div className="margin-10px-top font-size14">3:00-4:00</div>
-                                <div className="font-size13 text-light-gray">Kurhekar</div>
+                                <div className="font-size13 text-light-gray">Prof. Manish Kurheker</div>
                             </td>
                             <td />
                             <td>
                                 <span id="4-15" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-lightgreen" onClick={handleClick} >CP(TNP)</span>
                                 <div className="margin-10px-top font-size14">3:00-4:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td>
                                 <span id="5-15" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">3:00-4:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td>
                                 <span id="6-15" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">3:00-4:00</div>
-                                <div className="font-size13 text-light-gray">Kate Alley</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                         </tr>
 
@@ -309,7 +305,7 @@ export default function Calendar() {
                             <td>
                                 <span id="3-16" className="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 cursor-pointer bg-sky" onClick={handleClick} >DAA</span>
                                 <div className="margin-10px-top font-size14">4:00-5:00</div>
-                                <div className="font-size13 text-light-gray">Ivana Wong</div>
+                                <div className="font-size13 text-light-gray">Prof. Ashish Tiwari</div>
                             </td>
                             <td />
                             <td />

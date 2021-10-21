@@ -27,7 +27,6 @@ function Expense() {
             <IncomeExpenses />
 
             <div className="d-flex justify-content-between">
-                {/* <AddNote showAlert={props.showAlert} /> */}
                 <AddTransaction />
                 <TransactionList />
             </div>

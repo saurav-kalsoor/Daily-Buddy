@@ -1,25 +1,23 @@
 import React from 'react'
 
 function Footer() {
+
+
+
     return (
-            <footer class="footer-container">
-        <img src="img/Daily Buddy-logos.jpeg" alt=""/>
-        
-        <div class="social-icons">
-            <i class='bx bxl-linkedin-square' ></i>
-            <i class='bx bxl-github' ></i>
-            <i class='bx bxl-linkedin-square' ></i>
-            <i class='bx bxl-github' ></i>
-        </div>
-         {/* <ul class="footer-links">
-            <li class="menu-item">Politicas</li>
-            <li class="menu-item">Cookies</li>
-            <li class="menu-item">Servicios</li>
-            <li class="menu-item">Privacidad</li>
-            <li class="menu-item">Contacto</li>
-        </ul>  */}
-        <span class="copyright">&copy;2021, Daily Buddy</span>
-    </footer>
+        <footer className="footer-container">
+            <img src="img/Daily Buddy-logos.jpeg" alt="" />
+            <div className="text-light">Catch Hasan and Saurav here 👇</div>
+
+            <div className="social-icons">
+                <a href={"https://www.linkedin.com/in/hasan-koser-74868a177/"} target="_blank" rel="noreferrer"><i className='bx bxl-linkedin-square' /></a>
+                <a href={"https://github.com/HASH-002"} target="_blank" rel="noreferrer"><i className='bx bxl-github' /></a>
+                <a href={"https://www.linkedin.com/in/saurav-kalsoor-099b16190/"} target="_blank" rel="noreferrer"><i className='bx bxl-linkedin-square' /></a>
+                <a href={"https://github.com/saurav-kalsoor"} target="_blank" rel="noreferrer"><i className='bx bxl-github' /></a>
+            </div>
+
+            <span className="copyright">&copy;2021, Daily Buddy</span>
+        </footer>
     )
 }
 
