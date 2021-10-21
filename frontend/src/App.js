@@ -6,6 +6,9 @@ import Navbar from './components/Navbar';
 import Expense from './components/expenseTracker/Expense';
 import Calendar from './components/classScheduler/Calendar';
 import { useAlert } from 'react-alert'
+import TransactionState from './context/transactions/TransactionState';
+import UserState from './context/users/UserState';
+import Home from './components/Home';
 import('./App.css')
 
 function App() {
@@ -14,38 +17,34 @@ function App() {
 
   return (
     <>
-      <Router>
-        <button
-          onClick={() => {
-            alert.show('Oh look, an alert!', { type: 'success'})
-          }}
-        >
-          Show Alert
-        </button>
-        <Navbar />
+      <UserState>
+        <TransactionState>
+          <Router>
+            <Navbar />
+            <div className="container">
+              <Switch>
 
-        <div className="container">
-          <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
 
-            <Route exact path="/">
-              <Expense />
-            </Route>
+                <Route exact path="/register">
+                  <Register />
+                </Route>
 
-            <Route exact path="/classScheduler">
-              <Calendar />
-            </Route>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
 
-            <Route exact path="/register">
-              <Register />
-            </Route>
+                <Route exact path="/expense">
+                  <Expense />
+                </Route>
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
-
-          </Switch>
-        </div>
-      </Router>
+              </Switch>
+            </div>
+          </Router>
+        </TransactionState>
+      </UserState>
     </>
 
   );
