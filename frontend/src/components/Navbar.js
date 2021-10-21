@@ -1,8 +1,10 @@
 import { React, useContext, useEffect } from 'react'
 import { Link, useHistory, useLocation } from "react-router-dom";
 import UserContext from '../context/users/UserContext';
+// import AnalogClock from '../analogClock/AnalogClock';
 
 function Navbar() {
+
     const { users, getUser } = useContext(UserContext);
 
     let location = useLocation();
