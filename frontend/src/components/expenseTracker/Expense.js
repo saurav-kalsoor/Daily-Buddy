@@ -1,12 +1,22 @@
-import React from 'react'
+import { React, useEffect } from 'react'
+import { useLocation } from "react-router-dom";
 import AddTransaction from './AddTransaction';
 import Balance from './Balance';
 import IncomeExpenses from './IncomeExpenses';
 import TransactionList from './TransactionList';
 
 function Expense() {
-    //document.body.style.backgroundColor = "#f7f7f7";
-    
+
+    let location = useLocation();
+    useEffect(() => {
+        if (location.pathname === '/expense')
+            document.body.style.backgroundColor = "#f7f7f7";
+
+        return () => {
+            document.body.style.backgroundColor = "transparent";
+        };
+    }, [location]);
+
     return (
         <div className="container my-2" >
             <div className="d-flex justify-content-center align-items-center flex-column">
@@ -17,7 +27,7 @@ function Expense() {
             <IncomeExpenses />
 
             <div className="d-flex justify-content-between">
-            {/* <AddNote showAlert={props.showAlert} /> */}
+                {/* <AddNote showAlert={props.showAlert} /> */}
                 <AddTransaction />
                 <TransactionList />
             </div>
