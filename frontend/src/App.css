@@ -12,21 +12,39 @@ i:hover {
 }
 
 /************************************ Navbar Style ************************************/
-.btn-outline-primary:focus {
-  box-shadow: none;
+.btn-outline-primary:focus, .btn-outline-primary:active {
+  outline: none !important;
+  color: #007bff;
+  box-shadow: none !important;
 }
 .btn-outline-primary:hover {
   color: #007bff;
-  background-color: white;
+  background-color: white !important;
   border-color: #007bff;
+}
+
+.dropdown-item:focus, .dropdown-item:active {
+  color: black;
+  text-decoration: none;
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+.dropdown-item:hover {
+  color: black;
+  text-decoration: none;
+  background-color: transparent !important;
+  outline: none !important;
 }
 
 .show > .btn-outline-primary.dropdown-toggle {
   color: #007bff;
-  background-color: white;
+  background-color: white !important;
   border-color: #007bff;
 }
-.show > .btn-outline-primary.dropdown-toggle:focus {
+.show > .btn-outline-primary.dropdown-toggle:focus, .show > .btn-outline-primary.dropdown-toggle:active {
+  color: #007bff;
+  background-color: white !important;
   box-shadow: none;
 }
 
