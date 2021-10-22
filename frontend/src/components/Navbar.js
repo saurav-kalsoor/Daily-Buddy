@@ -49,6 +49,10 @@ function Navbar() {
                         <Link className="nav-link" to="/classScheduler">Class Scheduler</Link>
                     </li>}
 
+                    {localStorage.getItem('token') && <li className={"nav-item " + location.pathname === '/' ? "active" : ""}>
+                        <Link className="nav-link" to="/bookStore">Book Store</Link>
+                    </li>}
+
                 </ul>
 
                 {!localStorage.getItem('token') &&
