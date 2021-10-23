@@ -1,6 +1,6 @@
+const User = require('../models/User')
 const JWT = require('jsonwebtoken')
 const createError = require('http-errors')
-const client = require('./init_redis')
 
 module.exports = {
     signAccessToken: (userId) => {
@@ -8,7 +8,7 @@ module.exports = {
             const payload = {}
             const secret = process.env.ACCESS_TOKEN_SECRET
             const options = {
-                expiresIn: '1y', /* changed from 1h to 1y coz not implementing refresh token */ 
+                expiresIn: '1h',
                 audience: userId,
             }
             JWT.sign(payload, secret, options, (err, token) => {
@@ -31,8 +31,9 @@ module.exports = {
 
         JWT.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
             if (err) {
-                const mssg = err.name === 'JsonWebTokenError' ? "Unauthorized" : err.message
-                return next(createError.Unauthorized(mssg))
+                if(err.name === 'JsonWebTokenError')
+                    return next(createError.Unauthorized())
+                return next(createError.Forbidden())
             }
             req.payload = payload;
             next()
@@ -53,14 +54,22 @@ module.exports = {
                     return
                 }
 
-                client.SET(userId, token, 'EX', 365 * 24 * 60 * 60, (err, reply) => {
+                User.findById(userId, (err, user) => {
                     if (err) {
                         console.log(err.message)
                         reject(createError.InternalServerError())
                         return
                     }
-                })
+                    user.refreshToken = token;
+                    user.save((err) => {
+                        if (err) {
+                            console.log(err.message)
+                            reject(createError.InternalServerError())
+                            return
+                        }
+                    });
 
+                })
                 resolve(token)
             })
         })
@@ -72,13 +81,13 @@ module.exports = {
                 if (err) return reject(createError.Unauthorized())
                 const userId = payload.aud
 
-                client.GET(userId, (err,result)=>{
+                User.findById(userId, (err, user) => {
                     if (err) {
                         console.log(err.message)
                         reject(createError.InternalServerError())
                         return
                     }
-                    if(refreshToken === result) resolve(userId)
+                    if (refreshToken === user.refreshToken) resolve(userId)
                     reject(createError.Unauthorized())
                 })
             })
