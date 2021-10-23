@@ -12,6 +12,11 @@ import('./App.css')
 
 function App() {
 
+  // Logging out Automatically if user closes the window without being logged out
+  window.onbeforeunload = ()=> {
+    localStorage.clear();
+  }
+
   return (
     <>
       <UserState>

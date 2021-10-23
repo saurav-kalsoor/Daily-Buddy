@@ -2,7 +2,7 @@ import { React, useContext, useEffect } from 'react'
 import { Link, useHistory, useLocation } from "react-router-dom";
 import UserContext from '../context/users/UserContext';
 import { useAlert } from 'react-alert'
-import AnalogClock from  './analogClock/AnalogClock'
+import AuthService from '../services/AuthService';
 
 function Navbar() {
 
@@ -12,15 +12,20 @@ function Navbar() {
     let history = useHistory();
 
     useEffect(() => {
-        if (localStorage.getItem('token'))
+        if (localStorage.getItem("user"))
             getUser();
         // eslint-disable-next-line
     }, [location]);
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        history.push('/')
-        alert.show("Logged out successfully")
+    const handleLogout =  async () => {
+        try {
+            await AuthService.logout()
+            history.push('/')
+            alert.success("Logged out successfully")
+        } catch (error) {
+            console.error(error)
+            alert.error("Internal Server Error")
+        }
     }
 
     return (
@@ -41,17 +46,17 @@ function Navbar() {
                         <Link className="nav-link" to="/">Home</Link>
                     </li>
 
-                    {localStorage.getItem('token') && <li className={"nav-item " + location.pathname === '/' ? "active" : ""}>
+                    {localStorage.getItem("user") && <li className={"nav-item " + location.pathname === '/expense' ? "active" : ""}>
                         <Link className="nav-link" to="/expense">Expense</Link>
                     </li>}
 
-                    {localStorage.getItem('token') && <li className={"nav-item " + location.pathname === '/' ? "active" : ""}>
+                    {localStorage.getItem("user") && <li className={"nav-item " + location.pathname === '/classScheduler' ? "active" : ""}>
                         <Link className="nav-link" to="/classScheduler">Class Scheduler</Link>
                     </li>}
 
                 </ul>
 
-                {!localStorage.getItem('token') &&
+                {!localStorage.getItem("user") &&
                     <form className="d-flex">
                         <Link className="btn btn-outline-primary mx-1" to="/login" role="button">Login</Link>
                         <Link className="btn btn-outline-primary mx-1" to="/register" role="button">SignUp</Link>
@@ -60,12 +65,8 @@ function Navbar() {
 
             </div>
 
-            {localStorage.getItem('token') && <div className="dropdown mx-1">
-                <AnalogClock/>
-            </div>}
-
             {/* Protected Routes */}
-            {localStorage.getItem('token') && <div className="dropdown mx-4">
+            {localStorage.getItem("user") && <div className="dropdown mx-4">
                 <button type="button" className="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
                     {users.username}
                 </button>

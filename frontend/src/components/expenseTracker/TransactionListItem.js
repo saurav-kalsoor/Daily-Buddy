@@ -8,8 +8,8 @@ function TransactionListItem(props) {
     const { text, amount, _id, date } = props.transaction;
     const alert = useAlert();
 
-    const onClickDelete = () => {
-        deleteTransaction(_id)
+    const onClickDelete = async () => {
+        await deleteTransaction(_id)
         alert.success("Transaction deleted")
     }
 

@@ -1,71 +1,35 @@
-import axios from 'axios';
+import Axios from './Axios';
+import TokenStorage from './TokenService';
 
 const host = process.env.REACT_APP_HOST
 
-// const getAuthenticatedUser = async () => {
-//     const token = TokenStorage.getAccessToken();
-
-//     const { data } = await axios.get(`/user/profile`, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-
-//     return data;
-//   };
 const getAuthenticatedUser = async () => {
-
-    const { data } = await axios.get(`${host}/api/auth/getuser`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    const token = TokenStorage.getAccessToken();
+    const { data } = await Axios.get(`${host}/api/auth/getuser`, {
+        headers: { Authorization: `Bearer ${token}` },
     });
-
     return data;
 };
 
-
 const register = async (userInfo) => {
-
-    const response = await axios.post(`${host}/api/auth/register`, userInfo);
-
-    const json = response.data
-
-    // if (json.success) {
-    //     localStorage.setItem('token', json.accessToken); // Save auth token and redirect
-    //     history.push("/");
-    //     alert.success("Account created Successsfully")
-    // } else {
-    //     alert.error("Invalid Credentials")
-    // }
-    if (json.success)
-        localStorage.setItem('token', json.accessToken); // Save auth token and redirect
-
-    return json;
+    const { data } = await Axios.post(`${host}/api/auth/register`, userInfo);
+    if (data.success)
+        TokenStorage.setUser(data);
+    return data;
 };
 
 const login = async (email, password) => {
+    const { data } = await Axios.post(`${host}/api/auth/login`, { email, password });
+    if (data.success)
+        TokenStorage.setUser(data);
+    return data;
+}
 
-    const response = await axios.post(`${host}/api/auth/login`, { email, password });
+const logout = async () => {
+    const refreshToken = TokenStorage.getRefreshToken();
+    await Axios.put(`${host}/api/auth/logout`, { refreshToken: refreshToken })
+    localStorage.clear();
+}
 
-    const json = response.data
-
-    if (json.success)
-        localStorage.setItem('token', json.accessToken); // Save auth token and redirect
-    // 		history.push("/");
-    // 		alert.success("Logged in Successsfully")
-    // 	} else {
-    // 		alert.error("Invalid Credentials")
-    // 	}
-
-    // const { data } = await axios.post(`/authentication/login`, {
-    //     email,
-    //     password,
-    // });
-
-    // TokenStorage.setUser(data);
-
-    // return data;
-
-    return json;
-};
-
-const AuthService = { login, register, getAuthenticatedUser }
-
+const AuthService = { register, login, getAuthenticatedUser, logout }
 export default AuthService

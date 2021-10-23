@@ -9,7 +9,7 @@ function TransactionList() {
     const { transactions, getTransactions } = useContext(TransactionContext)
 
     useEffect(() => {
-        if (localStorage.getItem('token'))
+        if (localStorage.getItem("user"))
             getTransactions();
         else
             history.push('/login')
