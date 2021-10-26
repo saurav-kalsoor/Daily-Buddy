@@ -46,11 +46,11 @@ function Navbar() {
                     </li>
 
                     {localStorage.getItem("user") && <li className={"nav-item " + location.pathname === '/expense' ? "active" : ""}>
-                        <Link className="nav-link" to="/expense">Expense</Link>
+                        <Link className="nav-link font-weight-bold" to="/expense" style={{"color" : "#F3F3F3"}}>Expense</Link>
                     </li>}
 
                     {localStorage.getItem("user") && <li className={"nav-item " + location.pathname === '/classScheduler' ? "active" : ""}>
-                        <Link className="nav-link" to="/classScheduler">Class Scheduler</Link>
+                        <Link className="nav-link font-weight-bold" to="/classScheduler" style={{"color" : "#F3F3F3"}}>Class Scheduler</Link>
                     </li>}
 
                 </ul>
