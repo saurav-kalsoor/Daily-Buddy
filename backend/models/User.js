@@ -17,6 +17,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    refreshToken: {
+        type: String,
+        default: ""
+    },
     date: {
         type: Date,
         default: Date.now

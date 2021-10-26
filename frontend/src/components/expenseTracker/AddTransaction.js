@@ -11,14 +11,19 @@ function AddTransaction() {
         amount: ""
     });
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // To avoid form submission and reloading of page
-        addTransaction(transaction.text, transaction.amount);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await addTransaction(transaction.text, transaction.amount);
+            alert.success("Added Successfully")
+        } catch (error) {
+            // Error for non feasible or large numbers
+            alert.error("Enter Correct Amount")
+        }
         setTransaction({
             text: "",
             amount: ""
         })
-        alert.success("Added Successfully")
     };
 
     const onChange = (e) => {

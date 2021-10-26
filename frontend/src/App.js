@@ -9,8 +9,13 @@ import TransactionState from './context/transactions/TransactionState';
 import UserState from './context/users/UserState';
 import Home from './components/Home';
 import('./App.css')
-
+ 
 function App() {
+
+  // Logging out Automatically if user closes the window without being logged out
+  window.onbeforeunload = ()=> {
+    localStorage.clear();
+  }
 
   return (
     <>

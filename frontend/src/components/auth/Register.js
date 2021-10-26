@@ -1,31 +1,23 @@
 import { React, useState } from 'react'
 import { Link, useHistory } from "react-router-dom";
 import { useAlert } from 'react-alert'
+import AuthService from '../../services/AuthService';
 
 function Registration() {
+
     const [details, setDetails] = useState({ username: "", email: "", password: "" })
-    const host = process.env.REACT_APP_HOST
     let history = useHistory();
     const alert = useAlert();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch(`${host}/auth/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username: details.username, email: details.email, password: details.password })
-        });
-        const json = await response.json();
-        console.log(json)
-
-        if (json.success) {
-            localStorage.setItem('token', json.accessToken); // Save auth token and redirect
+        try {
+            await AuthService.register(details)
             history.push("/");
             alert.success("Account created Successsfully")
-        } else {
+        } catch (error) {
+            console.error(error)
             alert.error("Invalid Credentials")
         }
 
@@ -67,7 +59,7 @@ function Registration() {
                     </div>
                 </div>
             </div>
-            
+
             <div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
                 <h1 className="font-weight-bold">One of us?</h1>
                 <p>Hurry up and login here we are waiting for you ;)</p>

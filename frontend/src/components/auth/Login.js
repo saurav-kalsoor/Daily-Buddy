@@ -1,33 +1,29 @@
 import { React, useState } from 'react'
 import { Link, useHistory } from "react-router-dom";
 import { useAlert } from 'react-alert'
+import AuthService from '../../services/AuthService';
 
 function Login() {
 
 	const [credentials, setCredentials] = useState({ email: "", password: "" })
-	const host = process.env.REACT_APP_HOST
 	let history = useHistory();
 	const alert = useAlert();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(host)
-		const response = await fetch(`${host}/auth/login`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ email: credentials.email, password: credentials.password })
-		});
-		const json = await response.json(); // Recieved token
 
-		if (json.success) {
-			localStorage.setItem('token', json.accessToken); // Save auth token and redirect
+		try {
+			await AuthService.login(credentials.email, credentials.password)
 			history.push("/");
 			alert.success("Logged in Successsfully")
-		} else {
-			alert.error("Invalid Credentials")
+		} catch (error) {
+			if (error.response && error.response.status === 500)
+				alert.error("Internal Server Error")
+			else
+				alert.error("Invalid Credentials")
+			console.error(error)
 		}
+
 	}
 
 	const onChange = (e) => {
@@ -50,12 +46,12 @@ function Login() {
 								<h1 className="font-weight-bold text-primary mb-4">DAILY BUDDY</h1>
 								<div className="input-field w-75 mx-auto">
 									<i className="fa fa-user"></i>
-									<input type="email" placeholder="Email" name="email" value={credentials.email} onChange={onChange} />
+									<input type="email" placeholder="Email" name="email" value={credentials.email} onChange={onChange} required />
 								</div>
 
 								<div className="input-field w-75 mx-auto">
 									<i className="fa fa-lock"></i>
-									<input type="password" placeholder="Password" name="password" value={credentials.password} onChange={onChange} />
+									<input type="password" placeholder="Password" name="password" value={credentials.password} onChange={onChange} required />
 								</div>
 
 								<input type="submit" value="Login" className="btn btn-outline-primary rounded-pill m-3 px-5 font-weight-bold" />
@@ -65,7 +61,7 @@ function Login() {
 					</div>
 				</div>
 			</div>
-			
+
 			<div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
 				<h1 className="font-weight-bold">New here?</h1>
 				<p>Join our community to get benifits</p>
