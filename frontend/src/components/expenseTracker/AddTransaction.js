@@ -32,7 +32,7 @@ function AddTransaction() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className="form-label" htmlFor="desc">Text</label>
-                    <input type="text" name="text" className="form-control form-input-fields" id="desc" placeholder="Enter Description" value={transaction.text} onChange={onChange} required minLength={3} maxlength={25} />
+                    <input type="text" name="text" className="form-control form-input-fields" id="desc" placeholder="Enter Description" value={transaction.text} onChange={onChange} required minLength={3} maxLength={25} />
                 </div>
 
                 <div className="form-group">

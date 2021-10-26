@@ -6,7 +6,7 @@ function Footer() {
 
     return (
         <footer className="footer-container">
-            <img src="img/Daily Buddy-logos.jpeg" alt="" />
+            <img src="img/logo3.png" alt=""/>
             <div className="text-light">Catch Hasan and Saurav here 👇</div>
 
             <div className="social-icons">

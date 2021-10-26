@@ -8,7 +8,6 @@ import Calendar from './components/classScheduler/Calendar';
 import TransactionState from './context/transactions/TransactionState';
 import UserState from './context/users/UserState';
 import Home from './components/Home';
-import BookStore from './components/pdfStore/BookStore'
 import('./App.css')
 
 function App() {
@@ -41,11 +40,6 @@ function App() {
                 <Route exact path="/classScheduler">
                   <Calendar />
                 </Route>
-
-                <Route exact path="/bookStore">
-                  <BookStore />
-                </Route>
-
               </Switch>
             </div>
           </Router>
