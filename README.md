@@ -17,3 +17,7 @@ cd frontend
 npm run both
 
 # Backend runs on http://localhost:5000 and Frontend on http://localhost:3000
+```
+## Authors
+This project is developed and maintained
+by [@Hasan Koser](https://www.github.com/HASH-002) and [@Saurav Kalsoor](https://github.com/saurav-kalsoor)
