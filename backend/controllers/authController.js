@@ -13,10 +13,8 @@ module.exports = {
     
             const newUser = new User(result)
             const savedUser = await newUser.save()
-            const accessToken = await signAccessToken(savedUser.id)
-            const refreshToken = await signRefreshToken(savedUser.id)
             let success = true
-            res.send({ success, accessToken, refreshToken })
+            res.send({ success })
     
         } catch (error) {
             if (error.isJoi)

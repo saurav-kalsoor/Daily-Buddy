@@ -13,8 +13,6 @@ const getAuthenticatedUser = async () => {
 
 const register = async (userInfo) => {
     const { data } = await Axios.post(`${host}/api/auth/register`, userInfo);
-    if (data.success)
-        TokenStorage.setUser(data);
     return data;
 };
 
