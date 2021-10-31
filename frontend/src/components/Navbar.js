@@ -53,6 +53,10 @@ function Navbar() {
                         <Link className="nav-link font-weight-bold" to="/classScheduler" style={{"color" : "#F3F3F3"}}>Class Scheduler</Link>
                     </li>}
 
+                    <li className={"nav-item font-weight-italic" + location.pathname === '/news' ? "active" : ""}  >
+                        <Link className="nav-link font-weight-bold" to="/news" style={{"color" : "#F3F3F3"}}>News</Link>
+                    </li>
+
                 </ul>
 
                 {!localStorage.getItem("user") &&

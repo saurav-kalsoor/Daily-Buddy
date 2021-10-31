@@ -64,9 +64,11 @@ function TransactionList() {
             doc.text(20, y, new Date(transaction.date).toLocaleString('en-IN'))
 
             y = y + 40
+            return transaction
         })
 
         doc.save('generated.pdf')
+
     }
 
     let history = useHistory();
