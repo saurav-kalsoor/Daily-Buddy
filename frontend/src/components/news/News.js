@@ -23,7 +23,6 @@ export default function News(props) {
         setArticles(data.articles);
         setTotalResults(data.totalResults);
         setLoading(false);
-        console.log(articles)
     }
 
     useEffect(() => {
