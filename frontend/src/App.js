@@ -26,7 +26,7 @@ function App() {
         <TransactionState>
           <Router>
             <Navbar />
-            <div className="container">
+            <div>
               <Switch>
 
                 <Route exact path="/">
