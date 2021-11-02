@@ -4,7 +4,8 @@ Daily Buddy is just not an application but it is your best
 friend in your college which helps you to keep you updated with 
 daily news bulletin. It will further helps you in maintaining your 
 budget and helps you keep organize your daily online meeting 
-links, which are lost somewhere in your whatsapp group.
+links, which are lost somewhere in your whatsapp group and  don’t worry 
+about the secured data we are one of the best in it. 
 
 ## Quick Start
 
