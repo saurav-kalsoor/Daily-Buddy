@@ -8,14 +8,17 @@ import Calendar from './components/classScheduler/Calendar';
 import TransactionState from './context/transactions/TransactionState';
 import UserState from './context/users/UserState';
 import Home from './components/Home';
+import News from './components/news/News';
 import('./App.css')
- 
+
 function App() {
 
   // Logging out Automatically if user closes the window without being logged out
-  window.onbeforeunload = ()=> {
+  window.onbeforeunload = () => {
     localStorage.clear();
   }
+
+  const apiKey = "6bc8cefb02c3498ca848fffb27ae74f2"
 
   return (
     <>
@@ -23,7 +26,7 @@ function App() {
         <TransactionState>
           <Router>
             <Navbar />
-            <div className="container">
+            <div>
               <Switch>
 
                 <Route exact path="/">
@@ -44,6 +47,10 @@ function App() {
 
                 <Route exact path="/classScheduler">
                   <Calendar />
+                </Route>
+
+                <Route exact path="/news">
+                  <News apiKey={apiKey} key="0" country="in" category="general" />
                 </Route>
               </Switch>
             </div>

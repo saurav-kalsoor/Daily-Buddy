@@ -55,8 +55,11 @@ function Navbar() {
                             <Link className="nav-link font-weight-bold text-white ml-2" to="/classScheduler" >Class Scheduler</Link>
                         </li>
 
-                    </>}
+                        <li className="nav-item"  >
+                            <Link className="nav-link font-weight-bold text-white ml-2" to="/news" >News</Link>
+                        </li>
 
+                    </>}
                 </ul>
 
                 {!localStorage.getItem("user") &&
