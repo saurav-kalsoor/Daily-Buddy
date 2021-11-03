@@ -9,7 +9,7 @@ about the secured data we are one of the best in it.
 
 ## Quick Start
 
-In `backend` folder create a `.env` file add the
+Create a `.env` file add the
 following variables.
 ```bash
 PORT = 5000
@@ -23,7 +23,7 @@ Add your MONGODB_URI which is generally
 access tokens can be created by running
 `require('crypto').randomBytes(16).toString('hex')` in node.
 
-In `frontend` folder create .env.local file containing
+In `client` folder create .env.local file containing
 the following variable.
 ```bash
 REACT_APP_HOST = "http://localhost:5000"
@@ -31,15 +31,20 @@ REACT_APP_HOST = "http://localhost:5000"
 
 ```bash
 # Install dependencies for server
-cd backend
 npm install
 
 # Install dependencies for client
-npm run forntend-install
+cd client
+npm install
 
 # Run the client & server with concurrently
-cd frontend
-npm run both
+npm run dev
+
+# Run the Express server only
+npm run server
+
+# Run the React client only
+npm run client
 
 # Backend runs on http://localhost:5000 and Frontend on http://localhost:3000
 ```
