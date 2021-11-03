@@ -64,8 +64,8 @@ function Navbar() {
 
                 {!localStorage.getItem("user") &&
                     <form className="d-flex">
-                        <Link className="btn btn-outline-primary mx-1 text-muted border-white" to="/login" role="button">Login</Link>
-                        <Link className="btn btn-outline-primary mx-1 text-muted border-white" to="/register" role="button">SignUp</Link>
+                        <Link className="btn btn-outline-primary mx-1 text-dark border-white" to="/login" role="button">Login</Link>
+                        <Link className="btn btn-outline-primary mx-1 text-dark border-white" to="/register" role="button">SignUp</Link>
                     </form>
                 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner';
 import PropTypes from 'prop-types'
@@ -10,6 +11,7 @@ export default function News(props) {
     const [page, setPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
     const [category, setCategory] = useState('general')
+    let history = useHistory();
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -26,8 +28,11 @@ export default function News(props) {
     }
 
     useEffect(() => {
-        document.title = `${capitalizeFirstLetter(category)} - NewsMonkey`;
-        update(category)
+        if (localStorage.getItem("user")) {
+            document.title = `${capitalizeFirstLetter(category)} - NewsMonkey`;
+            update(category)
+        } else
+            history.push('/login')
         // eslint-disable-next-line
     }, [])
 
@@ -46,15 +51,14 @@ export default function News(props) {
             update(state)
             return state;
         });
-        
+
     }
 
     return (
         <>
-            <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }} >NewsMonkey - Top {capitalizeFirstLetter(category)} Headlines</h1>
-            {loading && <Spinner />}
+            <h1 className="text-center my-4">NewsMonkey - Top {capitalizeFirstLetter(category)} Headlines</h1>
 
-            <div className="text-center my-5">
+            <div className="text-center my-4">
                 <button name="general" type="button" className={`mx-2 text-center border btn ${category === 'general' ? "btn-primary" : "btn"}`} onClick={handleClick}>General</button>
                 <button name="business" type="button" className={`mx-2 text-center border btn ${category === 'business' ? "btn-primary" : "btn"}`} onClick={handleClick}>Business</button>
                 <button name="entertainment" type="button" className={`mx-2 text-center border btn ${category === 'entertainment' ? "btn-primary" : "btn"}`} onClick={handleClick}>Entertainment</button>
@@ -64,12 +68,14 @@ export default function News(props) {
                 <button name="sports" type="button" className={`mx-2 text-center border btn ${category === 'sports' ? "btn-primary" : "btn"}`} onClick={handleClick}>Sports</button>
             </div>
 
+            {loading && <Spinner />}
+
             <InfiniteScroll
                 dataLength={articles.length}
                 next={fetchMoreData}
                 hasMore={articles.length !== totalResults}
-                loader={<Spinner />}
-            >
+                loader={<Spinner />}>
+                    
                 <div className="container">
                     <div className="row my-3">
                         {articles.map((element) => {

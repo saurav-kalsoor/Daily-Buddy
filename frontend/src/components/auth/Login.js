@@ -32,7 +32,7 @@ function Login() {
 
 	return (
 		<>
-			<div className="container">
+			<div className="container my-4">
 				<div className="row">
 
 					<div className="col-md-6 d-none d-md-block">
@@ -62,7 +62,7 @@ function Login() {
 				</div>
 			</div>
 
-			<div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
+			<div className="colo-12 col-md-6 my-4 my-sm-0 text-center mx-auto">
 				<h1 className="font-weight-bold">New here?</h1>
 				<p>Join our community to get benifits</p>
 				<Link to="/register" className="btn btn-lg btn-outline-primary rounded-pill m-3 px-5  font-weight-bold">Sign up</Link>

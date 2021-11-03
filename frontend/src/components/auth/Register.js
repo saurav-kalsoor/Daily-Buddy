@@ -28,7 +28,7 @@ function Registration() {
     }
     return (
         <>
-            <div className="container">
+            <div className="container my-4">
                 <div className="row">
 
                     <div className="col-md-6 d-none d-md-block">
@@ -60,7 +60,7 @@ function Registration() {
                 </div>
             </div>
 
-            <div className="colo-12 col-md-6 my-1 my-sm-0 text-center mx-auto">
+            <div className="colo-12 col-md-6 my-3 my-sm-0 text-center mx-auto">
                 <h1 className="font-weight-bold">One of us?</h1>
                 <p>Hurry up and login here we are waiting for you ;)</p>
                 <Link to="/login" className="btn btn-lg btn-outline-primary rounded-pill m-3 px-5 font-weight-bold">Login</Link>

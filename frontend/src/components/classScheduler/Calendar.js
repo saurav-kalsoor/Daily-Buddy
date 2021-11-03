@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect,useRef, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { addCalendarEvent } from '../../utils/GCalApi'
 import links from '../../utils/Constants';
 
@@ -7,6 +8,13 @@ export default function Calendar() {
     const ref = useRef(null)
     const [classData, setclassData] = useState({ subject: "", time: new Date(), link: "" })
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let history = useHistory();
+
+    useEffect(() => {
+        if (!localStorage.getItem("user")) 
+            history.push('/login')
+        // eslint-disable-next-line
+    }, [])
 
     const handleClick = (e) => {
 
