@@ -29,7 +29,6 @@ export default function News(props) {
 
     useEffect(() => {
         if (localStorage.getItem("user")) {
-            document.title = `${capitalizeFirstLetter(category)} - NewsMonkey`;
             update(category)
         } else
             history.push('/login')
